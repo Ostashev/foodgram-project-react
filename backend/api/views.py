@@ -1,7 +1,4 @@
-from datetime import datetime
-
 from django.db.models import Sum
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from djoser.views import UserViewSet
@@ -60,8 +57,8 @@ class CustomUserViewSet(UserViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         subscription = get_object_or_404(Subscription,
-                                            user=user,
-                                            author=author)
+                                         user=user,
+                                         author=author)
         subscription.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -169,6 +166,6 @@ class RecipeViewSet(ModelViewSet):
             'ingredient__name',
             'ingredient__measurement_unit'
         ).annotate(amount=Sum('amount'))
-        
+
         shopp_list = shopping_list(ingredients=ingredients, user=user)
         return shopp_list

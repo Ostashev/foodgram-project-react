@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.http import HttpResponse
 
+
 def shopping_list(ingredients, user):
     today = datetime.today()
     shopping_list = (
