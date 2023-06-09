@@ -13,6 +13,6 @@ class IsAdminOrReadOnly(BasePermission):
 class IsAdminAuthorOrReadOnly(BasePermission):
 
     def has_object_permission(self, request, view, obj):
-        return (request.method in ('GET',)
+        return (request.method in ('GET', 'HEAD', 'OPTIONS')
                 or obj.author == request.user
                 or request.user.role == ADMIN)

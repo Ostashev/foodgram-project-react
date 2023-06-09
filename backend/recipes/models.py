@@ -7,7 +7,7 @@ from users.models import User
 class Tag(models.Model):
     '''Модель тэга.'''
     name = models.CharField(
-        max_length=200,
+        max_length=50,
         verbose_name='Название тэга',
         help_text='Название тэга',
         unique=True
@@ -24,7 +24,7 @@ class Tag(models.Model):
         ]
     )
     slug = models.SlugField(
-        max_length=200,
+        max_length=50,
         verbose_name='Слаг тэга',
         help_text='Слаг тэга',
         unique=True
@@ -41,13 +41,13 @@ class Tag(models.Model):
 class Ingredient(models.Model):
     '''Модель ингредиента.'''
     name = models.CharField(
-        max_length=200,
+        max_length=100,
         verbose_name='Название ингредиента',
         help_text='Название ингредиента',
         unique=True
     )
     measurement_unit = models.CharField(
-        max_length=200,
+        max_length=15,
         verbose_name='Единица измерения',
         help_text='Единица измерения',
     )
@@ -71,7 +71,6 @@ class Recipe(models.Model):
     '''Модель рецепта.'''
     tags = models.ManyToManyField(
         Tag,
-        # through='RecipeTags',
         verbose_name='Тэги',
         help_text='Тэги',
         related_name='recipes'
