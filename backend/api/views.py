@@ -33,7 +33,7 @@ from .services import shopping_list
 
 
 class CustomUserViewSet(UserViewSet):
-    '''Вьюсет для кастомной модели пользователя.'''
+    """Вьюсет для кастомной модели пользователя."""
     queryset = User.objects.all()
     serializer_class = CustomUserSerializer
 
@@ -43,7 +43,7 @@ class CustomUserViewSet(UserViewSet):
         permission_classes=[IsAuthenticated]
     )
     def subscribe(self, request, **kwargs):
-        '''Метод для подписки/отписки от автора.'''
+        """Метод для подписки/отписки от автора."""
         user = request.user
         author_id = self.kwargs.get('id')
         author = get_object_or_404(User, id=author_id)
@@ -67,7 +67,7 @@ class CustomUserViewSet(UserViewSet):
         permission_classes=[IsAuthenticated]
     )
     def subscriptions(self, request):
-        '''Метод для просмотра подписок на авторов.'''
+        """Метод для просмотра подписок на авторов."""
         user = request.user
         queryset = User.objects.filter(following__user=user)
         pages = self.paginate_queryset(queryset)
@@ -78,7 +78,7 @@ class CustomUserViewSet(UserViewSet):
 
 
 class IngredientViewSet(viewsets.ModelViewSet):
-    '''Вьюсет для ингредиента.'''
+    """Вьюсет для ингредиента."""
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
     permission_classes = (IsAdminOrReadOnly,)
@@ -88,14 +88,14 @@ class IngredientViewSet(viewsets.ModelViewSet):
 
 
 class TagViewSet(viewsets.ModelViewSet):
-    '''Вьюсет для тэга.'''
+    """Вьюсет для тэга."""
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
     permission_classes = (IsAdminOrReadOnly,)
 
 
 class RecipeViewSet(ModelViewSet):
-    '''Вьюсет для рецепта.'''
+    """Вьюсет для рецепта."""
     queryset = Recipe.objects.all()
     permission_classes = (IsAdminAuthorOrReadOnly,)
     filter_backends = (DjangoFilterBackend,)
@@ -115,7 +115,7 @@ class RecipeViewSet(ModelViewSet):
         permission_classes=[IsAuthenticated]
     )
     def favorite(self, request, pk):
-        '''Добавление и удаление в(из) избранное.'''
+        """Добавление и удаление в(из) избранное."""
         if request.method == 'POST':
             return self.add_to(Favorite, request.user, pk)
 
@@ -127,7 +127,7 @@ class RecipeViewSet(ModelViewSet):
         permission_classes=[IsAuthenticated]
     )
     def shopping_cart(self, request, pk):
-        '''Добавление и удаление из списка покупок.'''
+        """Добавление и удаление из списка покупок."""
         if request.method == 'POST':
             return self.add_to(ShoppingCart, request.user, pk)
 
@@ -155,7 +155,7 @@ class RecipeViewSet(ModelViewSet):
         permission_classes=[IsAuthenticated]
     )
     def download_shopping_cart(self, request):
-        '''Выгрузка списка покупок.'''
+        """Выгрузка списка покупок."""
         user = request.user
         if not user.shopping_cart.exists():
             return Response(status=HTTP_400_BAD_REQUEST)

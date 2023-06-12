@@ -12,7 +12,7 @@ from .models import (
 
 
 class BaseAdminSettings(admin.ModelAdmin):
-    '''Базовая админ панель.'''
+    """Базовая админ панель."""
     empty_value_display = '-пусто-'
     list_filter = ('author', 'name', 'tags')
 

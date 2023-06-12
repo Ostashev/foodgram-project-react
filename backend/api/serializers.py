@@ -87,7 +87,7 @@ class SubscriptionSerializer(CustomUserSerializer):
         recipes_limit = self.context['request'].GET.get('recipes_limit')
         recipes = obj.recipes.all()
         if recipes_limit:
-            recipes = obj.recipes.all()[:int(recipes_limit)]
+            recipes = recipes[:int(recipes_limit)]
         return RecipeLightSerializer(
             recipes, many=True, read_only=True).data
 
