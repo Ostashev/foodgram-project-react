@@ -10,16 +10,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY='ml2gl+r#1nuqp@i$z3y0c3t-!4rimqxwz$o_f$)ns%odp%aedi'
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 # DEBUG = int(os.getenv('DEBUG', default=0))
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '158.160.26.236', 'spisok.ddns.net']
 # ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost/*',
-    'https://spisok.ddns.net/*',
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     'http://localhost/*',
+#     'https://spisok.ddns.net/*',
+# ]
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
