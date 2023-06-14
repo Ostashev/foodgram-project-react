@@ -99,11 +99,11 @@ jobs:
       with:
         # Это параметр воркфлоу, указывающий нужную версию NodeJS
         node-version: 13.12.0
-    - name: Install dependencies
+    - name: Install
       # Эта команда устанавливает зависимости для фронтенда
       run: |
         cd frontend/
-        npm install -g n
+        npm install
 
     - name: Install dependencies
       # Эта команда устанавливает зависимости для фронтенда
