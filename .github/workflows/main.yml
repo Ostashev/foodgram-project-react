@@ -103,7 +103,7 @@ jobs:
       # Эта команда устанавливает зависимости для фронтенда
       run: |
         cd frontend/
-        npm i
+        npm install -g n
 
     - name: Install dependencies
       # Эта команда устанавливает зависимости для фронтенда
