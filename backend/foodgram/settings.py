@@ -17,13 +17,13 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', '158.160.26.236', 'spisok.ddns.net']
 # ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost/*',
-    'https://spisok.ddns.net/*',
+    'https://*.spisok.ddns.net',
+    'http://*.localhost',
 ]
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-]
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+# ]
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
