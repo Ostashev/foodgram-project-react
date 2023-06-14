@@ -18,7 +18,7 @@ from recipes.models import (
     Tag,
 )
 from users.models import Subscription, User
-from .filters import RecipeFilter
+from .filters import RecipeFilter, IngredientFilter
 from .permissions import IsAdminAuthorOrReadOnly, IsAdminOrReadOnly
 from .serializers import (
     CustomUserSerializer,
@@ -83,8 +83,10 @@ class IngredientViewSet(viewsets.ModelViewSet):
     serializer_class = IngredientSerializer
     permission_classes = (IsAdminOrReadOnly,)
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('^name',)
-    search_fields = ('name',)
+    # filterset_fields = ('^name',)
+    # search_fields = ('^name',)
+    pagination_class = None
+    filterset_class = IngredientFilter
 
 
 class TagViewSet(viewsets.ModelViewSet):
@@ -92,6 +94,7 @@ class TagViewSet(viewsets.ModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
     permission_classes = (IsAdminOrReadOnly,)
+    pagination_class = None
 
 
 class RecipeViewSet(ModelViewSet):

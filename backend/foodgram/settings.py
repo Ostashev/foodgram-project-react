@@ -9,8 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY='ml2gl+r#1nuqp@i$z3y0c3t-!4rimqxwz$o_f$)ns%odp%aedi'
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# DEBUG = True
-DEBUG = int(os.getenv('DEBUG', default=0))
+DEBUG = True
+# DEBUG = int(os.getenv('DEBUG', default=0))
 
 # ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
@@ -63,10 +63,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'foodgram.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB', 'django'),
+        'USER': os.getenv('POSTGRES_USER', 'django'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
+        'HOST': os.getenv('DB_HOST', ''),
+        'PORT': os.getenv('DB_PORT', 5432)
     }
 }
 
@@ -85,7 +96,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
@@ -95,7 +106,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static_backend/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'collected_static'
 
 MEDIA_URL = '/media/'
