@@ -2,9 +2,7 @@ import csv
 import logging
 
 from django.core.management.base import BaseCommand
-
 from recipes.models import Ingredient
-
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
