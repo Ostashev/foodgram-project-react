@@ -98,21 +98,13 @@ jobs:
       uses: actions/setup-node@v3
       with:
         # Это параметр воркфлоу, указывающий нужную версию NodeJS
-        node-version: 13.12
-
-    - name: Install
-      # Эта команда устанавливает зависимости для фронтенда
-      run: |
-        cd frontend/
-        npm install
+        node-version: 13.12.0
 
     - name: Install dependencies
       # Эта команда устанавливает зависимости для фронтенда
       run: |
         cd frontend/
         npm ci
-
-
 
     - name: Test frontend
       # Запускаем тесты
