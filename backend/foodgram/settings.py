@@ -147,3 +147,5 @@ DJOSER = {
         'current_user': 'api.serializers.CustomUserSerializer',
     },
 }
+
+CSRF_TRUSTED_ORIGINS = ["https://localhost", "https://spisok.ddns.net"]
