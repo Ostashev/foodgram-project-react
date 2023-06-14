@@ -98,7 +98,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         # Это параметр воркфлоу, указывающий нужную версию NodeJS
-        node-version: 13.12.0-alpine
+        node-version: 13.12
 
     - name: Install dependencies
       # Эта команда устанавливает зависимости для фронтенда
