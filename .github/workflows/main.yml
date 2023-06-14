@@ -106,6 +106,12 @@ jobs:
         cd frontend/
         npm ci
 
+    - name: Install
+      # Эта команда устанавливает зависимости для фронтенда
+      run: |
+        cd frontend/
+        npm install
+
     - name: Test frontend
       # Запускаем тесты
       run: |
