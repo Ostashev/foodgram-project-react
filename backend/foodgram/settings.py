@@ -16,6 +16,11 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '158.160.26.236', 'spisok.ddns.net']
 # ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost/*',
+    'https://spisok.ddns.net/*',
+]
+
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'recipes.apps.RecipesConfig',
@@ -147,5 +152,3 @@ DJOSER = {
         'current_user': 'api.serializers.CustomUserSerializer',
     },
 }
-
-CSRF_TRUSTED_ORIGINS = ["https://localhost", "https://spisok.ddns.net"]
