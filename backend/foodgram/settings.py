@@ -14,7 +14,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'TRUE'
 
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1', '158.160.26.236', 'spisok.ddns.net']
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='*').split(' ')
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.spisok.ddns.net',
