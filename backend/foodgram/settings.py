@@ -9,11 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# DEBUG = False
-# DEBUG = int(os.getenv('DEBUG', default=0))
 DEBUG = os.getenv('DEBUG') == 'TRUE'
 
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1', '158.160.26.236', 'spisok.ddns.net']
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='*').split(' ')
 
 CSRF_TRUSTED_ORIGINS = [
@@ -123,7 +120,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+
     'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomPagination',
     'PAGE_SIZE': 6,
 
